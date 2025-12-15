@@ -7,10 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+
+  
+model Contact {
   id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
+  ownerId   String
+  contactId String
+  alias     String? 
   createdAt DateTime @default(now())
+  
+  @@index([ownerId])
+  // contact -> User is optional; we keep plain contactId so we can store phonebook entries
+}
+
+model Blocked {
+  id         String   @id @default(uuid())
+  ownerId    String
+  blockedId  String
+  createdAt  DateTime @default(now())
+
+   @@index([ownerId])
 }
