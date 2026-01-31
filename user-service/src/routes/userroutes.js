@@ -23,4 +23,4 @@ router.delete("/contacts/:id", protect, removeContact);
 router.post("/block/:targetId", protect, blockUser);
 router.delete("/block/:targetId",protect, unblockUser);
 
-export default router;
+export default router; 

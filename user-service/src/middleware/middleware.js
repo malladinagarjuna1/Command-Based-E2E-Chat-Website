@@ -23,7 +23,6 @@ export const protect = (req, res, next) => {
       });
     }
 
-    // 🔑 Attach ONLY identity
     req.user = {
       id: decoded.id
     };

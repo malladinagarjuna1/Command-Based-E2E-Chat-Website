@@ -2,10 +2,6 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-/**
- * Get current authenticated user identity
- * Auth-service already validated JWT
- */
 export const getMe = async (req, res) => {
   return res.json({
     userId: req.user.id
@@ -13,10 +9,7 @@ export const getMe = async (req, res) => {
 
 };
 
-/**
- * Add contact
- * body: { contactId, alias }
- */
+
 export const addContact = async (req, res) => {
   try {
     const ownerId = req.user.id;
@@ -44,9 +37,7 @@ export const addContact = async (req, res) => {
   }
 };
 
-/**
- * Get contacts of authenticated user
- */
+
 export const getContacts = async (req, res) => {
   try {
     const contacts = await prisma.contact.findMany({
@@ -61,9 +52,7 @@ export const getContacts = async (req, res) => {
   }
 };
 
-/**
- * Remove contact
- */
+
 export const removeContact = async (req, res) => {
   try {
     const { id } = req.params;
@@ -84,9 +73,7 @@ export const removeContact = async (req, res) => {
   }
 };
 
-/**
- * Block a user
- */
+
 export const blockUser = async (req, res) => {
   try {
     const ownerId = req.user.id;
